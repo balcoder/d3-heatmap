@@ -1,6 +1,7 @@
-# Npm Babel Prettier Build Tools
+# FCC Bar Chart using D3.js
 
-A collection of packages that build a website using `npm scripts`.
+A barchart showing US GDP from 1947 to 2015.Built using the D3 JavaScript
+library
 
 * [Packages used](#Packages-used)
 * [Using in your project](#using-in-your-project)
@@ -26,7 +27,7 @@ A collection of packages that build a website using `npm scripts`.
 * Make sure you have Node and Npm installed on your machine , [go here](https://nodejs.org/en/download/package-manager/)
 * From the terminal cd into your project directory and run  `npm install` to install all the dependencies in the package.json
   file.
-* Then you can run any of the scripts from the package.json file by running `npm run script-name`, for example the the most frequently used script would be `npm run watch:all` which runs the server and watches for changes in scss, js,and images folders in src. Once a change is detected it converts to es5 and creates the production ready minified, prettified and bundled files in the dist directory. The dist/js folder contains the compiled js files without compressing which are useful for development. So the script in index.html is set to the dist/js/main.js but if you want to see minified and bundled production version just change the script src to dist/js-min/app.min.js. 
+* Then you can run any of the scripts from the package.json file by running `npm run script-name`, for example the the most frequently used script would be `npm run watch:all` which runs the server and watches for changes in scss, js,and images folders in src. Once a change is detected it converts to es5 and creates the production ready minified, prettified and bundled files in the dist directory. The dist/js folder contains the compiled js files without compressing which are useful for development. So the script in index.html is set to the dist/js/main.js but if you want to see minified and bundled production version just change the script src to dist/js-min/app.min.js.
 
 ## Using in your project
 * First, ensure that node.js & npm are both installed. If not, choose your OS and installation method from [this page](https://nodejs.org/en/download/package-manager/) and follow the instructions.

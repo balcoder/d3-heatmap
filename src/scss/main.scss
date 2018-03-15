@@ -1,20 +1,13 @@
 @import 'variables';
 @import 'utilities';
 
-body {
-  background-color: $color-teal-base;
-  color: $color-text;
+body{
+  background-color: #0087C6;
+  color: white;
 }
-
-
-h1,h2 {
-  text-align: center;
-
-}
-.foo {
-  @include absolute(0, 0, auto, auto);
-}
-
-.Tour {
-  display: flex;
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }

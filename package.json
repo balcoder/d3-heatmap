@@ -1,5 +1,5 @@
 {
-  "name": "D3 Heatmap",
+  "name": "d3-heatmap",
   "version": "1.0.0",
   "description": "Heatmap based on ground temperature in USA from 1953 to 2015",
   "author": "Des Barrett",
