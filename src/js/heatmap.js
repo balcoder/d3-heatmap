@@ -3,16 +3,16 @@
 
 var url = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json"
 //set up width, height and margins
-var margin = {top: 20, right: 50, bottom: 30, left: 80},
+var margin = {top: 20, right: 50, bottom: 80, left: 80},
     width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 550 - margin.top - margin.bottom;
 
 var months =  ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 //color scale
 var color = d3.scaleLinear()
-.domain([12, 8, 4, 0])
-.range(['#D7191C', '#FDAE61', '#ABD9E9', '#2C7BB6']);
+.domain([12, 9, 6, 3, 0])
+.range(['#D7191C', '#FDAE61','#EDBD71', '#ABD9E9', '#2C7BB6']);
 
 //tooltip div
 var div = d3.select("body").append("div")
@@ -20,14 +20,13 @@ var div = d3.select("body").append("div")
     .style("opacity", 0);
 
 // add svg to body
-var svg = d3.select('body').append('svg')
+var svg = d3.select('#container').append('svg')
 .attr('width', width + margin.left + margin .right)
 .attr('height', height + margin.top + margin.bottom)
 .append('g')
 .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-
-
+//get data
 d3.json(url, (error, data) => {
   if(error) console.log("Problem loading json data: " + error);
 
@@ -41,11 +40,10 @@ d3.json(url, (error, data) => {
   // format the data
   dataArray.forEach(function(d) {
       d.year = parseTime(d.year);
-    //  d.month = parseMonth(d.month);
+
   });
 
   // get a date range for the current year from jan 1st to jan 1st
-  //{"year": 2014, "month": 11,"variance": 0.632 },
   var start = d3.min(dataArray,function(d) { return +d.year; }),
       end = d3.max(dataArray,function(d) { return +d.year; });
 
@@ -54,20 +52,13 @@ d3.json(url, (error, data) => {
     .range([0, width])
     .domain([start, end]);
 
-
-  // var y = d3.scaleTime()
-  //     .domain([new Date("2018-01-01"), new Date("2018-31-12")])
-  //     .range([height, 0]);
-
   var y = d3.scaleLinear()
   .range([height, 0])
-  .domain([0, 12]);
+  .domain([13, 1]);
 
   //x and y axis
   var xAxis = d3.axisBottom(x);
-  // var yAxis = d3.axisLeft(y)
-  //              //.tickValues(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
-  //               .tickFormat(d3.timeFormat("%B"));
+
 
   svg.append('g')
   .selectAll('text')
@@ -115,8 +106,33 @@ svg.selectAll('.cell')
 
 svg.append("g")
   .attr("class", "x axis")
-  .attr("transform", "translate(0," + height + ")")
+  .attr("transform", "translate(0," + (height ) + ")")
   .call(xAxis);
+
+var linearGradient = svg.append('linearGradient')
+  .attr('id', 'linear-gradient');
+
+linearGradient.selectAll('stop')
+  .data(color.range())
+  .enter().append('stop')
+  .attr('offset', (d,i) => i/(color.range().length - 1))
+  .attr('stop-color', (d) => d);
+
+svg.append('rect')
+  .attr('width', 300)
+  .attr('height', 20)
+  .style('fill', 'url(#linear-gradient)')
+  .attr('transform', 'translate(300,475)');
+var colorDom = color.domain().map(String);
+  svg.append('g')
+    .selectAll('text')
+    .data(colorDom)
+    .enter().append('text')
+    .attr('class','temperatures')
+    .attr('x', (d) => `${590 - (Math.ceil(300 / 13) * d)}`)
+    .attr('y', '515')
+    .text((d) => d);
+
 
 // svg.append("g")
 //   .attr("class", "y axis")
