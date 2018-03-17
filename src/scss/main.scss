@@ -2,14 +2,37 @@
 @import 'utilities';
 
 body{
-  background-color: #0087C6;
+  background-color: #EEEEEE;
   color: white;
 }
+
+#chart {
+  display:block;
+  margin:auto;
+  background-color: white;
+  margin-top: 40px;
+
+}
+#description {
+  font-size: 80%;
+  font-weight: bold;
+  color: #EDEDED;
+}
+
+.shadow {
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+#title {
+  font-size: 150%;
+  font-weight: bold;
+  color: #04080F;
 }
 
 div.tooltip {
