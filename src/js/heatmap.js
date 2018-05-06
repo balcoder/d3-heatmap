@@ -10,10 +10,18 @@ var margin = {top: 70, right: 50, bottom: 80, left: 80},
 
 var months =  ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
+//var colorRange = ['#67001F','#B2172B','#F4A582','#F8F8F8','#B8DFED','#2166AC','#5155A5'];
+
 //color scale
 var color = d3.scaleLinear()
 .domain([12, 9, 6, 3, 0])
 .range(['#D7191C', '#FDAE61','#f2d7ab', '#71c8e7', '#2C7BB6']);
+
+// var color = d3.scaleLinear()
+// .domain([12, 10, 8, 6, 4, 2, 0])
+// .range(colorRange);
+
+
 
 //tooltip div
 var div = d3.select("body").append("div")
@@ -105,7 +113,7 @@ svg.selectAll('.cell')
         .duration(200)
         .style("opacity", .9);
       div.html(yearFormat(d.year) + "<br/>" + months[d.month-1] +  "<br/>" +
-                          (baseTemp + d.variance).toFixed(2)) //parseTime(d.year) + "<br/>" + formatMonth(d.month)
+                          (baseTemp + d.variance).toFixed(2))
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY - 28) + "px");
       })
