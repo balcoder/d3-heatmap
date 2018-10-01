@@ -24,7 +24,7 @@ library
   * [uglify-js](https://github.com/mishoo/UglifyJS2)
 
 ## Using as is
-* Make sure you have Node and Npm installed on your machine , [go here](https://nodejs.org/en/download/package-manager/)
+* This build tool is built using npm scripts with all scripts in the package.json file. Make sure you have Node and Npm installed on your machine , [go here](https://nodejs.org/en/download/package-manager/)
 * From the terminal cd into your project directory and run  `npm install` to install all the dependencies in the package.json
   file.
 * Then you can run any of the scripts from the package.json file by running `npm run script-name`, for example the the most frequently used script would be `npm run watch:all` which runs the server and watches for changes in scss, js,and images folders in src. Once a change is detected it converts to es5 and creates the production ready minified, prettified and bundled files in the dist directory. The dist/js folder contains the compiled js files without compressing which are useful for development. So the script in index.html is set to the dist/js/main.js but if you want to see minified and bundled production version just change the script src to dist/js-min/app.min.js.
